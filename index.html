@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mindful Health Wellness</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(270deg, #a1c4fd, #c2e9fb, #fcb69f);
+      background-size: 600% 600%;
+      animation: animateBackground 15s ease infinite;
+      z-index: -1;
+      opacity: 0.3;
+      filter: blur(2px);
+    }
+
+    @keyframes animateBackground {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+    }
+
+    .hero-content {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .hero-content h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto 20px auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header with logo and centered title -->
+  <header style="background-color: #4A90E2; padding: 10px 20px; position: relative;">
+    <div style="display: flex; align-items: center;">
+      <!-- Logo on the left -->
+      <img src="Mindful.jpg" alt="Mindful Logo" style="height: 50px; border-radius: 27px;" />
+
+      <!-- Spacer div -->
+      <div style="flex: 1;"></div>
+
+      <!-- Centered title -->
+      <h1 style="position: absolute; left: 50%; transform: translateX(-50%); color: white; margin: 0;">
+        Mindful Health Wellness
+      </h1>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <ul id="navLinks">
+      <li onclick="showSection('home')">Home</li>
+      <li onclick="showSection('chatbot')">Chatbot</li>
+      <li onclick="showSection('quiz')">ZenCheck</li>
+      <li onclick="showSection('mindfulness')">Mindfulness</li>
+      <li onclick="showSection('doctor')">Doctor Connect</li>
+    </ul>
+  </nav>
+
+
+  <!-- Main Content -->
+  <main>
+    <section id="home" class="content active">
+      <div class="hero">
+        <div class="hero-content">
+          <h2>Welcome to Your Mental Health Dashboard</h2>
+          <p>
+            Take control of your well-being with Chatbot support, ZenCheck quiz, Mindfulness tools, and Doctor Connect —
+            all in one place.
+          </p>
+          <img src="https://cdn-icons-png.flaticon.com/512/4089/4089210.png" width="100" alt="Mental Health Icon" />
+        </div>
+      </div>
+    </section>
+
+    <section id="chatbot" class="content hidden">
+      <h2>Chatbot</h2>
+      <iframe id="chatbotFrame" src="http://127.0.0.1:5000/" width="100%" height="687"></iframe>
+    </section>
+
+    <section id="quiz" class="content hidden">
+      <iframe id="quizFrame" src="https://kumarrajan64751.github.io/PHQ9-AND-GAD7-TEST/" width="100%" height="600"
+        style="border:none; border-radius:10px;"></iframe>
+    </section>
+
+    <section id="mindfulness" class="content hidden">
+      <h2>Mindfulness Exercises</h2>
+      <p style="text-align: center;">Follow the breathing animation to relax.</p>
+      <div id="breathingContainer">
+        <div id="circle"></div>
+        <p id="breathText">Breathe In</p>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <label>
+          <input type="checkbox" id="musicToggle"> Play background music
+        </label>
+      </div>
+
+      <div style="margin-top: 20px; text-align: center;">
+        <label>Session Length:
+          <select id="durationSelect">
+            <option value="60">1 Minute</option>
+            <option value="180">3 Minutes</option>
+            <option value="300">5 Minutes</option>
+          </select>
+        </label>
+        <button onclick="startSession()">Start Session</button>
+        <h3 id="timerDisplay">Time Left: 0:00</h3>
+      </div>
+
+      <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </section>
+
+    <section id="doctor" class="content hidden">
+      <h2>Connect to Doctor</h2>
+      <iframe src="https://arshaada21.github.io/doctor-appointment/" width="100%" height="600"
+        style="border:none; border-radius:10px;"></iframe>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer style="
+    background: rgba(255, 255, 255, 0.8);
+    border-top: 1px solid #ccc;
+    text-align: center;
+    padding: 12px 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9em;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    backdrop-filter: blur(4px);
+    z-index: 10;">
+    <span style="margin-right: 6px;">©</span>2025 All rights reserved | <strong>Mental Health Dashboard</strong>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>
